@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Anemeldeformular</h2>
+        <form id="form" action="#">
+            <div>
+                <label for="name">Name</label>
+                <input id="name"  class="form-control" type="text" placeholder="name" required>
+            </div>
+            <div>
+                <label for="vorname">Vorname</label>
+                <input id="vorname" class="form-control"  type="text" placeholder="Vorname" required>
+            </div>
+            <div>
+                <label for="geburtsdatum">Geburtsdatum</label>
+                <input id="geburtsdatum" class="form-control" type="date" placeholder="Geburtsdatum" required>
+            </div>
+            <div>
+                <label for="adresse">Adresse</label>
+                <input id="adresse" class="form-control" type="text" placeholder="Adresse" required>
+            </div>
+            <div>
+                <label for="mailadresse">Email</label>
+                <input id="mailadresse" class="form-control"  type="email" required>
+            </div>
+            <div>
+                <label for="telefonnummer">Telefonnummer</label>
+                <input id="telefonnummer" class="form-control"  type="tel" placeholder="telefonnummer" required>
+            </div>
+            <input type="submit" class="btn btn-primary mt-3" value="Submit">
+        </form>
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", ()=>{
+            document.getElementById("form").addEventListener("submit", ()=>validate());
+        });
+        function validate(){
+            validateAlter();
+            validateMailAdresse();
+        }
+        function validateAlter(){
+            let aktuellesDatum = new Date();
+            
+            let gebDatum = new Date(document.getElementById("geburtsdatum").value);
+            let age = aktuellesDatum.getFullYear()-gebDatum.getFullYear();
+
+            if(aktuellesDatum.getMonth()-gebDatum.getMonth()<0)
+              age--;
+            if(aktuellesDatum.getMonth()-gebDatum.getMonth() == 0 &&aktuellesDatum.getDay()-gebDatum.getDay()<0)
+                age--;
+            console.log(age)
+            if(age<18)
+            return alert("Error");
+        }
+        function validateMailAdresse(){
+            
+        }
+    </script>
+</body>
+</html>
