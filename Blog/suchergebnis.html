@@ -52,9 +52,16 @@ function initPage() {
 	const params = Object.fromEntries(urlSearchParams.entries());
 
 	let searchQuery = params["searchQuery"];
-
+         let gefundeneContainer = $('#gefundene'); 
 		let gefundeneArticles = Search(searchQuery);
 		console.log(gefundeneArticles);
+		for(let art of gefundeneArticles) {
+			gefundeneContainer.append(createArticle(art));
+		}
+
+		
+
+		ImplementSearch();
 
 };
 </script>

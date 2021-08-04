@@ -190,10 +190,24 @@ function Search(searchQuery) {
       if (prop == "datum" || prop == "id" || prop == "bild" || prop == "tags")
         continue;
       if (a[prop])
-        if (a[prop].search(searchQuery) != -1)
-          if (searchedArticles.indexOf(a) == -1) searchedArticles.push(a);
+        if (a[prop].search(searchQuery) != -1){
+          if (searchedArticles.indexOf(a) == -1)
+           searchedArticles.push(a);
+        }
     }
   }
 
   return searchedArticles;
+}
+
+
+function ImplementSearch(){
+  //implementSearch
+	let searchBtn = document.getElementById("searchBtn");
+	searchBtn.addEventListener("click",()=>{
+		let searchQuery = document.getElementById("searchquery").value;
+		searchBtn.addEventListener("click", ()=>{
+			location.href = `suchergebnis.html?searchQuery=${searchQuery}`;
+		});
+	})
 }
