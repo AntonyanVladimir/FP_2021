@@ -13,7 +13,7 @@ function createArticle(article) {
 
 	// Text
 	newArticle += '<p>' + article.text + '</p>';
-	
+	newArticle += `<img src="${article.bild}" />`
 	// Tags einfügen
 	for (var i = 0; i < article.tags.length; i++) {
 		newArticle += '<a class="badge badge-pill badge-primary" href="tagliste.html">' + article.tags[i] + '</a> ';
