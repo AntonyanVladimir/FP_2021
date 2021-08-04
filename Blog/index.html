@@ -17,7 +17,7 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 <link rel="stylesheet" href="css/blog.css">
 
 </head>
-<body onload="initPage();">
+<body>
 <!-- Struktur des HTML-Dokuments:
 - Kopfteil mit Navigation
 - Hauptteil mit Seitenleiste
@@ -53,22 +53,35 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 <script src="js/blog.js"></script>
 <script>
 "use strict";
+$(document).ready(()=>{initPage()});
 
 function initPage() {
+	
 	// Artikel erzeugen
 	
 	// DOM-Knoten für den Inhalt holen (<main...>)
-	var main = document.getElementById('inhalt');
+	var mainContent = $('#inhalt');
 	
 	// Array durchlaufen, jeder Eintrag ist ein Blogeintrag-Objekt
-	for (var i = 0; i < articles.length; i++) {
+	for (var article in articles) {
+		console.log(articles[article]);
 		//und Artikel einhängen
-		main.appendChild(createArticle(articles[i]));
+		mainContent.append(createArticle(articles[article]));
 	}
 	
 	// Sidebar erzeugen
 	var sidebar = document.getElementById('sidebar');
 	sidebar.appendChild(createSidebar(articles));
+
+
+	//implementSearch
+	let searchBtn = document.getElementById("searchBtn");
+	searchBtn.addEventListener("click",()=>{
+		let searchQuery = document.getElementById("searchquery").value;
+		searchBtn.addEventListener("click", ()=>{
+			location.href = `suchergebnis.html?searchQuery=${searchQuery}`;
+		});
+	})
 };
 </script>
 

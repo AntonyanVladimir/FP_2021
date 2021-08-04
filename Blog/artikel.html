@@ -42,10 +42,14 @@
 function initPage() {
 	// Artikel erzeugen
 	// DOM-Knoten für den Inhalt holen (<main...>)
-	var main = document.getElementById('inhalt');
+	var main = $('#inhalt');
 	
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+    console.log(params);
+	let id = Number(params["articleId"]);
 	//und Artikel einhängen
-	main.appendChild(createArticle(articles[1]));
+	main.append(createArticle(articles[id]));
 	
 	// Sidebar erzeugen
 	var sidebar = document.getElementById('sidebar');

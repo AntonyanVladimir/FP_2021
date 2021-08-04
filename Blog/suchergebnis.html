@@ -21,15 +21,11 @@
 	<div class="container">
 		<div class="row">
 			<!-- Breite 3/4 (9/12) -->
-			<main class="col-12 col-md-9">
+			<main id="gefundene" class="col-12 col-md-9">
 				<h1>Suche</h1>
 				Ihre Suche nach &lt;Suchstring&gt; lieferte folgende Ergebnisse:
 				
-				<ul>
-					<li>HTML Dokumente</li>
-					<li><a href="artikel.html">HTML Elemente</a></li>
-					<li>Semantische Strukturierung von HTML-Seiten</li>			
-				</ul>
+				
 			</main>
 
 			<!-- Breite 1/4 (3/12) -->
@@ -51,6 +47,15 @@ function initPage() {
 	// Sidebar erzeugen
 	var sidebar = document.getElementById('sidebar');
 	sidebar.appendChild(createSidebar(articles));
+
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+
+	let searchQuery = params["searchQuery"];
+
+		let gefundeneArticles = Search(searchQuery);
+		console.log(gefundeneArticles);
+
 };
 </script>
 </body>
