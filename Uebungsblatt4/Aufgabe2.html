@@ -49,19 +49,30 @@
         }
         function validateAlter(){
             let aktuellesDatum = new Date();
-            
-            let gebDatum = new Date(document.getElementById("geburtsdatum").value);
+            const gebDatumElement = document.getElementById("geburtsdatum");
+            let gebDatum = new Date(gebDatumElement.value);
             let age = aktuellesDatum.getFullYear()-gebDatum.getFullYear();
 
             if(aktuellesDatum.getMonth()-gebDatum.getMonth()<0)
               age--;
             if(aktuellesDatum.getMonth()-gebDatum.getMonth() == 0 &&aktuellesDatum.getDay()-gebDatum.getDay()<0)
                 age--;
-            console.log(age)
+           
             if(age<18)
-            return alert("Error");
+            gebDatumElement.style.border  = "2px solid red";
+            else 
+            gebDatumElement.style.border  = "";
+             
         }
         function validateMailAdresse(){
+            let email = document.getElementById("mailadresse")
+            let pattern = "/[A-Za-z0-9]{4}@[A-Za-z0-9]{4}\.[A-Za-z0-9]{4}/gi";
+            
+            if(email.value.match(pattern)){
+                email.style.border = "";
+            } else{
+                email.style.border = "2px solid red";
+            }
             
         }
     </script>

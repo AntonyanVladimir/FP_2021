@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Analoguhr</title>
+
+<style>
+
+#uhr {
+	position: absolute;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+}
+
+#sekzeiger,
+#minzeiger,
+#hrszeiger {
+	position: absolute;
+	left: 100px;
+	background-color: black;
+}
+
+#sekzeiger {
+	top: 10px;
+	height: 100px;
+	width: 2px;
+	transform-origin: center 90px;
+	background-color: red;
+	z-index: 1;
+}
+#minzeiger {
+	top: 10px;
+	height: 100px;
+	width: 4px;
+	transform-origin: center 90px;
+}
+#hrszeiger {
+	top: 30px;
+	height: 80px;
+	width: 4px;
+	transform-origin: center 70px;
+}
+
+.stundenstrich,
+.minutenstrich {
+	position: absolute;
+	left: 100px;
+	top: 0px;
+	background-color: black;
+	height: 15px;
+	width: 1px;
+	transform-origin: center 100px;
+	z-index: -1;
+}
+
+.stundenstrich {
+	height: 20px;
+	width: 3px;
+}
+</style>
+
+<script>
+"use strict";
+
+let display;
+let sekzeiger;
+let minzeiger;
+let hrszeiger;
+
+function startClock() {
+	// Elementknoten auslesen
+    display = document.getElementById('display');
+    sekzeiger = document.getElementById('sekzeiger');
+    minzeiger = document.getElementById('minzeiger');
+    hrszeiger = document.getElementById('hrszeiger');
+ 
+    // Ziffernblatt aufbauen
+    for (let i = 0; i < 60; i++) {
+    	let strich = document.createElement('div');
+    	// breiter oder schmaler Strich?
+    	if (i % 5 === 0) {
+	    	strich.className = 'stundenstrich';
+    	} else {
+	    	strich.className = 'minutenstrich';
+    	}
+    	// drehen
+    	strich.style.transform = `rotate(${i * 6}deg)`;
+    	document.getElementById('uhr').appendChild(strich);
+    }
+    
+    // Uhr starten
+	setInterval(displayClock, 1000);
+}
+
+function displayClock() {
+	let now = new Date();
+	let hrs = now.getHours();
+	let min = now.getMinutes();
+	let sek = now.getSeconds();
+	
+	let sekwinkel = sek * 6;
+	let minwinkel = min * 6 + sekwinkel / 60.0;
+	let hrswinkel = (hrs % 12) * 30 + minwinkel / 12.0;
+		
+	hrszeiger.style.transform = `rotate(${hrswinkel}deg)`;
+	minzeiger.style.transform = `rotate(${minwinkel}deg)`;
+	sekzeiger.style.transform = `rotate(${sekwinkel}deg)`;
+	
+	if (hrs < 10) {hrs = '0' + hrs;}
+	if (min < 10) {min = '0' + min;}
+	if (sek < 10) {sek = '0' + sek;}
+	display.innerHTML = `${hrs}:${min}:${sek}`;	
+}
+</script>
+</head>
+<body onload="javascript:startClock();">
+<div id="display">Data</div>
+<div id="uhr">
+	<div id="sekzeiger"></div>
+	<div id="minzeiger"></div>
+	<div id="hrszeiger"></div>
+</div>
+</body>
+</html>
