@@ -10,6 +10,10 @@ export class ArtikelService {
   getAll():artikel[]{
     return this.artikels;
   }
+  getById(id:string):any{
+    let art = this.artikels.find(m=>m.id === id);
+    return art;
+  }
 
   private artikels: artikel[] = [{
 		id:'7',

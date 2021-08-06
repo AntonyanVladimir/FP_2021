@@ -1,4 +1,5 @@
-<ng-container>
+<ng-container *ngIf="artikel">
+  <button class="btn btn-warning" [routerLink]="['/artikelEdit', artikel.id]" >Bearbeiten</button>
   <article>
     <h2>
       <a href="#">
@@ -23,4 +24,8 @@
       </a>
     </span>
   </article>
+</ng-container>
+
+<ng-container *ngIf="artikelNotGefunden">
+    <p class="text-danger border rounded p-4">Artikel kann nicht gefunden werden !!!</p>
 </ng-container>

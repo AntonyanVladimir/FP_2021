@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KopfzeileComponent } from './kopfzeile/kopfzeile.component';
@@ -12,6 +12,8 @@ import { ArtikelEditorComponent } from './artikel-editor/artikel-editor.componen
 import { ImpressumComponent } from './impressum/impressum.component';
 import { KontaktComponent } from './kontakt/kontakt.component';
 import { ArtikelShareComponent } from './artikel-share/artikel-share.component';
+import { ArtikelListeComponent } from './artikel-liste/artikel-liste.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import { ArtikelShareComponent } from './artikel-share/artikel-share.component';
     ImpressumComponent,
     KontaktComponent,
     ArtikelShareComponent,
-  
+    ArtikelListeComponent,  
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

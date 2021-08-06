@@ -1,55 +1,73 @@
+<ng-container ngIf="artikel">
+  <form action="index.html" method="post">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Überschrift</span>
+      </div>
+      <input
+        class="form-control"
+        id="ueberschrift"
+        name="ueberschrift"
+        type="text" [(ngModel)]="artikel.ueberschrift"
+      />
+    </div>
 
-				
-				<form action="index.html" method="post">
-				
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Überschrift</span>
-						</div>
-						<input class="form-control" id="ueberschrift" name="ueberschrift" type="text">
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Autor</span>
+      </div>
+      <input class="form-control" id="autor" name="autor" type="text" [(ngModel)]="artikel.autor"/>
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Autor</span>
-						</div>
-						<input class="form-control" id="autor" name="autor" type="text">
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Datum</span>
+      </div>
+      <input class="form-control" id="datum" name="datum" type="date" [(ngModel)]="artikel.datum"/>
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Datum</span>
-						</div>
-						<input class="form-control" id="datum" name="datum" type="date">
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Anrisstext</span>
+      </div>
+      <textarea
+        class="form-control"
+        id="anriss"
+        name="anriss"
+        cols="60"
+        rows="4" [(ngModel)]="artikel.anriss"
+      ></textarea>
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Anrisstext</span>
-						</div>
-						<textarea class="form-control" id="anriss" name="anriss" cols="60" rows="4"></textarea>
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Artikeltext</span>
+      </div>
+      <textarea
+        class="form-control"
+        id="text"
+        name="text"
+        cols="60"
+        rows="8" [(ngModel)]="artikel.text"
+      ></textarea>
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Artikeltext</span>
-						</div>
-						<textarea class="form-control" id="text" name="text" cols="60" rows="8"></textarea>
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Tags (kommagetrennt)</span>
+      </div>
+      <input class="form-control" id="tags" name="tags" type="text" [(ngModel)]="artikel.tags"/>
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Tags (kommagetrennt)</span>
-						</div>
-						<input class="form-control" id="tags" name="tags" type="text">
-					</div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Bild</span>
+      </div>
+      <input class="form-control" id="bild" name="bild" type="file" />
+    </div>
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Bild</span>
-						</div>
-						<input class="form-control" id="bild" name="bild" type="file">
-					</div>
-
-					<button id="btnSubmit" type="submit" class="btn btn-primary">Veröffentlichen</button>
-				</form>
+    <button id="btnSubmit" type="submit" class="btn btn-primary">
+      Veröffentlichen
+    </button>
+  </form>
+</ng-container>

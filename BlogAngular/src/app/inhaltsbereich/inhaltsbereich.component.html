@@ -7,11 +7,7 @@
         >Neuen Artikel erstellen</a
       >
       <hr />
-      <ng-container ng-if="artikels">
-        <div *ngFor="let a of artikels">
-          <app-artikel [artikel]="a"></app-artikel>
-        </div>
-      </ng-container>
+      <router-outlet></router-outlet>
     </main>
     <!-- Breite 1/4 (3/12) -->
     <aside id="sidebar" class="col-12 col-md-3 mt-5">
