@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <!-- Breite 3/4 (9/12) -->
+      <main class="col-12 col-md-9">
+        <h1>Teilen via E-Mail</h1>
+
+        <form action="index.html" method="post">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Empfänger</span>
+            </div>
+            <input
+              class="form-control"
+              id="empfaenger"
+              name="empfaenger"
+              type="email"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Mitteilung</span>
+            </div>
+            <textarea
+              class="form-control"
+              id="mitteilung"
+              name="mitteilung"
+              cols="60"
+              rows="6"
+            >
+Schau Dir diesen Artikel mal an:
+HTML Elemente http://myblog.local/artikel.html
+                      
+Viele Grüße,				
+                      </textarea
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary" onclick="sendMail();">
+            Absenden
+          </button>
+        </form><p>artikel-share works!</p>

@@ -1,0 +1,26 @@
+<ng-container>
+  <article>
+    <h2>
+      <a href="#">
+        {{ artikel?.ueberschrift }}
+      </a>
+    </h2>
+    <p>
+      {{ artikel?.datum }}
+      Uhr von
+      {{ artikel?.autor }}
+    </p>
+    <p>
+      <b>
+        {{ artikel?.anriss }}
+      </b>
+    </p>
+    <p>{{ artikel?.text }}</p>
+    <img src="{{ artikel?.bild }}" />
+    <span *ngFor="let tag of artikel?.tags">
+      <a class="badge badge-pill badge-primary mr-1" href="tagliste.html">
+        {{ tag }}
+      </a>
+    </span>
+  </article>
+</ng-container>

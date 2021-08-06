@@ -1,0 +1,24 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+.textimg {
+	float: left;
+	width: 80px;
+	margin-right: 10px;
+}
+
+/* Tags in der Tagcloud */
+.tag-1 {font-size: small;}
+.tag-2 {font-size: medium;}
+.tag-3 {font-size: large;}
+.tag-4 {font-size: larger;}
+.tag-5 {font-size: x-large;}
+
+img{
+	width: 800px;
+	height:auto;
+}
+img[title="Logo"]{
+	width: 30px;
+	height: 30px;
+}

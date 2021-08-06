@@ -1,0 +1,23 @@
+<!-- Hauptteil -->
+<div class="container">
+  <div class="row">
+    <!-- Breite 3/4 (9/12) -->
+    <main id="inhalt" class="col-12 col-md-9">
+      <a class="btn btn-primary" href="artikelNeu.html"
+        >Neuen Artikel erstellen</a
+      >
+      <hr />
+      <ng-container ng-if="artikels">
+        <div *ngFor="let a of artikels">
+          <app-artikel [artikel]="a"></app-artikel>
+        </div>
+      </ng-container>
+    </main>
+    <!-- Breite 1/4 (3/12) -->
+    <aside id="sidebar" class="col-12 col-md-3 mt-5">
+        <app-sidebar [artikels]="artikels"></app-sidebar>
+    </aside>
+  </div>
+  <!-- row -->
+</div>
+<!-- container -->
