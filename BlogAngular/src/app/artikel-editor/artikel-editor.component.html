@@ -1,5 +1,5 @@
-<ng-container ngIf="artikel">
-  <form action="index.html" method="post">
+<ng-container *ngIf="artikel">
+  <form action="#" method="post" (ngSubmit)="publish()">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Überschrift</span>
@@ -23,7 +23,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Datum</span>
       </div>
-      <input class="form-control" id="datum" name="datum" type="date" [(ngModel)]="artikel.datum"/>
+      <input class="form-control" id="datum" name="datum"  [(ngModel)]="artikel.datum" type="date"/>
     </div>
 
     <div class="input-group mb-3">
@@ -63,11 +63,18 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Bild</span>
       </div>
-      <input class="form-control" id="bild" name="bild" type="file" />
+      <input class="form-control"  name="bild" type="text" [(ngModel)]="artikel.bild"/> />
     </div>
-
-    <button id="btnSubmit" type="submit" class="btn btn-primary">
-      Veröffentlichen
-    </button>
+    <div class="btn-group">
+      <button id="btnSubmit" type="submit" class="btn btn-primary">
+        Veröffentlichen
+      </button> 
+      <button id="back" class="btn btn-danger" (click)="back()">
+        Zurück
+      </button>
+    </div>
   </form>
+
+
 </ng-container>
+  

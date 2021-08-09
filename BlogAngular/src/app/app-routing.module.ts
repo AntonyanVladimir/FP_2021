@@ -10,7 +10,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: 'artikels', component: ArtikelListeComponent },
   { path: 'artikel/:id', component: ArtikelComponent },
-  { path: 'artikelEdit/:id', component: ArtikelEditorComponent },
+  { path: 'artikel-editor/:id', component: ArtikelEditorComponent },
+  { path: 'artikel-editor', component: ArtikelEditorComponent },
   { path: 'impressum', component: ImpressumComponent },
   { path: 'kontakt', component: KontaktComponent },
   { path: '', component: ArtikelListeComponent },

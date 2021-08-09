@@ -1,13 +1,13 @@
-<ng-container *ngIf="artikel">
-  <button class="btn btn-warning" [routerLink]="['/artikelEdit', artikel.id]" >Bearbeiten</button>
-  <article>
+<ng-container *ngIf="artikel" >
+  <article class="mt-4">
     <h2>
       <a href="#">
         {{ artikel?.ueberschrift }}
       </a>
     </h2>
+    <button class="btn btn-warning float-right" [routerLink]="['/artikel-editor', artikel.id]" >Bearbeiten</button>
     <p>
-      {{ artikel?.datum }}
+      {{ artikel.datum}}
       Uhr von
       {{ artikel?.autor }}
     </p>
