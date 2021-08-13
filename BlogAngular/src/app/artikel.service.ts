@@ -9,6 +9,35 @@ export class ArtikelService {
   getAll(): artikel[] {
     return this.artikels;
   }
+  getByTag(tag: string) {
+    let arts = new Array<artikel>();
+    for (let art of this.artikels) {
+      if (art.tags.includes(tag)) {
+        arts.push(art);
+        continue;
+      }
+    }
+    return arts;
+  }
+  getBySuchwort(suchwort: string) {
+    var articles: artikel[] = [];
+    this.artikels.forEach((artikel) => {
+      for (let [key, value] of Object.entries(artikel)) {
+        if (
+          key == 'text' ||
+          key == 'ueberschrift' ||
+          key == 'autor' ||
+          key == 'anriss'
+        ) {
+          if (value.search(suchwort) == -1){
+            continue;
+          } else articles.push(artikel);
+        }
+      }
+    });
+    return articles;
+  }
+
   getById(id: string): any {
     let art = this.artikels.find((m) => m.id === id);
     return art;
@@ -20,15 +49,16 @@ export class ArtikelService {
       ) as artikel;
       // update existing artikle
       let index = this.artikels.indexOf(current);
-	  debugger;
-      if (typeof artikel.tags === 'string')
-        artikel.tags = artikel.tags.ToString().split(',');
-      this.artikels[index] = artikel;
+      if (typeof artikel.tags === 'string') {
+        artikel.tags = artikel.tags.toString().split(',');
+        this.artikels[index] = artikel;
+      }
     } else {
-      artikel.id = (this.artikels.length + 7).toString();
       //add new artikle
-      this.artikels.push(artikel);
+      artikel.id = (this.artikels.length + 7).toString();
+      artikel.tags = artikel.tags.toString().split(',');
     }
+    this.artikels.push(artikel);
   }
 
   private artikels: artikel[] = [

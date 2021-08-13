@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { artikel } from '../artikel';
 
 @Component({
@@ -7,7 +8,8 @@ import { artikel } from '../artikel';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  suchwort:string ="";
   @Input() artikels?: artikel[];
   TagMap:Map<string, number> = new Map<string, number>();
   ngOnInit(): void {
@@ -52,5 +54,19 @@ export class SidebarComponent implements OnInit {
       }
     }
     return tagMap;
+  }
+  sucheStarten(){
+    let suchwort:HTMLInputElement = document.getElementById("searchquery") as HTMLInputElement;
+    this.suchwort = suchwort.value;
+    if(suchwort.value){
+      let queryParams = {suchwort:suchwort.value}
+      this.router.navigate(
+        ['/artikels'], 
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: queryParams, 
+          queryParamsHandling: 'merge', // remove to replace all query params by provided
+        });
+    }
   }
 }

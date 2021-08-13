@@ -1,31 +1,54 @@
-<ng-container *ngIf="artikel" >
+<ng-container *ngIf="artikel">
   <article class="mt-4">
     <h2>
-      <a href="#">
+      <a href="#" [routerLink]="['/artikel', artikel.id]">
         {{ artikel?.ueberschrift }}
       </a>
     </h2>
-    <button class="btn btn-warning float-right" [routerLink]="['/artikel-editor', artikel.id]" >Bearbeiten</button>
+    <button
+      class="btn btn-warning float-right"
+      [routerLink]="['/artikel-editor', artikel.id]"
+    >
+      Bearbeiten
+    </button>
     <p>
-      {{ artikel.datum}}
+      {{ artikel.datum }}
       Uhr von
       {{ artikel?.autor }}
     </p>
+    <span
+      class="badge badge-pill badge-danger mr-1"
+      style="cursor: pointer"
+      [routerLink]="['/artikel', artikel.id]"
+      [queryParams]="{ display: 'compact' }"
+      >Kompakt</span
+    >
+    <span
+    class="badge badge-pill badge-success"
+    style="cursor: pointer"
+    [routerLink]="['/artikel', artikel.id]"
+    [queryParams]="{ display: 'full' }"
+    >Full View</span
+  >
     <p>
       <b>
         {{ artikel?.anriss }}
       </b>
     </p>
     <p>{{ artikel?.text }}</p>
-    <img src="{{ artikel?.bild }}" />
-    <span *ngFor="let tag of artikel?.tags">
-      <a class="badge badge-pill badge-primary mr-1" href="tagliste.html">
-        {{ tag }}
-      </a>
-    </span>
+    <ng-container *ngIf="!artikelCompact">
+      <img src="{{ artikel?.bild }}" />
+      <span *ngFor="let tag of artikel?.tags">
+        <a class="badge badge-pill badge-primary mr-1" href="#" [routerLink]="['/artikels']" [queryParams]="{ tag: tag}">
+          {{ tag }}
+        </a>
+      </span>
+    </ng-container>
   </article>
 </ng-container>
 
 <ng-container *ngIf="artikelNotGefunden">
-    <p class="text-danger border rounded p-4">Artikel kann nicht gefunden werden !!!</p>
+  <p class="text-danger border rounded p-4">
+    Artikel kann nicht gefunden werden !!!
+  </p>
 </ng-container>
