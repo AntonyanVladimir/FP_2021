@@ -38,12 +38,12 @@
               type="text"
               id="operator"
               name="operator"
-              class="mt-3 form-control"
+              class="mt-4 form-control"
             >
-              <option>+</option>
-              <option>-</option>
-              <option>*</option>
-              <option>/</option>
+              <option>add</option>
+              <option>sub</option>
+              <option>mul</option>
+              <option>div</option>
             </select>
           </div>
           <div class="col-5">
@@ -56,13 +56,15 @@
             />
           </div>
         </div>
-        <div class="row mt-4 p-3"><button id="berechnen" class="btn btn-primary">Berechnen</button></div>
+        <div class="row mt-4 p-3">
+          <button id="berechnen" class="btn btn-primary">Berechnen</button>
+        </div>
         <div class="row mt-4">
           <div class="col">
             <span>Ergebnis:</span>
             <span
               id="ergebnis"
-              class="p-3 border border-primary rounded ml-4 d-none"
+              class="p-3 border border-primary rounded ml-4 d-none text-danger"
             ></span>
           </div>
         </div>
@@ -70,18 +72,27 @@
     </div>
     <script>
       window.addEventListener("DOMContentLoaded", (event) => {
-
         const berechnenBtn = document.getElementById("berechnen");
+        const ergebnis = document.getElementById("ergebnis");
+        berechnenBtn.addEventListener("click", () => berechnungStarten());
 
-        berechnenBtn.addEventListener("click", ()=>{})
+        function berechnungStarten() {
+          let operand1 = document.getElementById("operand1").value;
+          let operator = document.getElementById("operator").value;
+          let operand2 = document.getElementById("operand2").value;
 
-        function berechnungStarten(){
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function () {
-              document.getElementById("demo").innerHTML = this.responseText;
-            };
-            xhttp.open("GET", "ajax_info.txt", true);
-            xhttp.send();
+          const xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            ergebnis.innerHTML = this.responseText;
+            ergebnis.classList.remove("d-none");
+            console.log(this.responseText);
+          };
+          xhttp.open(
+            "GET",
+            `http://localhost:3300/${operand1}/${operator}/${operand2}`,
+            true
+          );
+          xhttp.send();
         }
       });
     </script>

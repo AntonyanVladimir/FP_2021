@@ -56,7 +56,7 @@ function serve(req, res) {
 
   res.writeHead(status, {
     "content-type": "text/plain",
-    "Access-Control-Allow-Origin": "null",
+    "Access-Control-Allow-Origin": "*",
   });
 
  
