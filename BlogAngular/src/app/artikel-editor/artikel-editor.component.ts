@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { artikel } from '../artikel';
 import { ArtikelService } from '../artikel.service';
+import { BlogartikelRestService } from '../blogartikel-rest.service';
 
 @Component({
   selector: 'app-artikel-editor',
@@ -14,17 +15,16 @@ export class ArtikelEditorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: ArtikelService
+    private service: BlogartikelRestService
   ) {}
 
   ngOnInit(): void {
     let currentId = this.activatedRoute.snapshot.paramMap.get('id');
 
     if (currentId) {
-      let artFromService = this.service.getById(currentId);
-      if (artFromService) {
-        this.artikel = artFromService;
-      }
+      this.service.getArtikel(currentId).subscribe(result => {
+        this.artikel = result;
+      });
     } else {
       this.artikel = {};
       console.log(typeof this.artikel);
@@ -35,8 +35,9 @@ export class ArtikelEditorComponent implements OnInit {
     this.router.navigate(['/']);
   }
   publish() {
-    console.log(this.artikel);
-    this.service.publishArtikel(this.artikel);
+    this.service.editArtikel(this.artikel)
+    .subscribe();
+    ;
     this.back();
   }
 }

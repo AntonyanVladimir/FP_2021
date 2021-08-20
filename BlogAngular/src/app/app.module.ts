@@ -14,7 +14,7 @@ import { KontaktComponent } from './kontakt/kontakt.component';
 import { ArtikelShareComponent } from './artikel-share/artikel-share.component';
 import { ArtikelListeComponent } from './artikel-liste/artikel-liste.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +34,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
